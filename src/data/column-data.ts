@@ -1,6 +1,6 @@
-import { Column } from "@/types/column.type";
+import { TColumn } from "@/types/column.type";
 
-export const columnData:Column[] = [
+export const columnData:TColumn[] = [
     {
         id: "todo",
         title: "To Do",

@@ -1,4 +1,4 @@
-import { useDraggable } from "@dnd-kit/core";
+import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
@@ -9,12 +9,19 @@ type TaskProps = {
 };
 
 export default function Task({ id, title, description }: TaskProps) {
-  const { listeners, attributes, setNodeRef, transform, isDragging } =
-    useDraggable({
-      id,
-    });
+  const {
+    listeners,
+    attributes,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id,
+  });
 
   const style = {
+    transition,
     transform: CSS.Translate.toString(transform),
   };
 

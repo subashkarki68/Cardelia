@@ -1,5 +1,4 @@
 import { appConfig } from "@/config/app";
-import { ModeToggle } from "../mode-toggle";
 
 export function Footer() {
   return (
@@ -25,9 +24,6 @@ export function Footer() {
         </a>
         .
       </p>
-      <div className="hidden md:block">
-        <ModeToggle />
-      </div>
     </footer>
   );
 }

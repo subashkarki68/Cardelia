@@ -1,6 +1,6 @@
 // import { ColumnID } from "./column.type";
 
-export type Task = {
+export type TTask = {
   id: string;
   title: string;
   description: string;

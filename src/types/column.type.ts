@@ -1,10 +1,10 @@
-import { Task } from "./task.type";
+import { TTask } from "./task.type";
 
 // export type ColumnID = "todo" | "in-progress" | "done";
 
-export type Column = {
+export type TColumn = {
     // id: ColumnID;
     id: string;
     title: string;
-    items?: Task[];
+    items: TTask[];
 }
