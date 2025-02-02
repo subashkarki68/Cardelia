@@ -8,28 +8,26 @@ import Empty from "./pages/Empty";
 import Sample from "./pages/Sample";
 
 export const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Applayout />,
-        children: [
-            {
-                path: "",
-                element: <Dashboard />,
-            },
-            {
-                path: "sample",
-                element: <Sample />,
-            },
-            {
-                path: "empty",
-                element: <Empty />,
-            },
-        ],
-    },
-    {
-        path: "*",
-        element: <NoMatch />,
-    },
-], {
-    basename: global.basename
-})
+  {
+    path: "/",
+    element: <Applayout />,
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
+      {
+        path: "sample",
+        element: <Sample />,
+      },
+      {
+        path: "empty",
+        element: <Empty />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NoMatch />,
+  },
+]);
