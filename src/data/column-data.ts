@@ -8,13 +8,13 @@ export const columnData:TColumn[] = [
         {
             id: "1",
             title: "Task 1",
-            description: "Description 1",
+            description: "Make a Cup of Tea",
             columnId: "todo",
         },
         {
             id: "2",
             title: "Task 2",
-            description: "Description 2",
+            description: "Go to the Gym.",
             columnId: "todo",
         },
         ],
@@ -26,19 +26,7 @@ export const columnData:TColumn[] = [
         {
             id: "3",
             title: "Task 3",
-            description: "Description 3",
-            columnId: "in-progress",
-        },
-        ],
-    },
-    {
-        id: "inw-progress",
-        title: "Inw Progress",
-        items: [
-        {
-            id: "4",
-            title: "Task 4",
-            description: "Description 3",
+            description: "Take Out the Trash",
             columnId: "in-progress",
         },
         ],
@@ -49,8 +37,8 @@ export const columnData:TColumn[] = [
         items: [
         {
             id: "5",
-            title: "Task 4",
-            description: "Description 4",
+            title: "Introduction",
+            description: "Introduce yourself to the team",
             columnId: "done",
         },
         ],
