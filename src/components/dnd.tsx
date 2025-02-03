@@ -20,6 +20,7 @@ import Column from "./column";
 import Task from "./task";
 
 export default function DragAndDrop() {
+  const [activeItem, setActiveItem] = useState<TTask | undefined>(undefined);
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor)
@@ -35,6 +36,39 @@ export default function DragAndDrop() {
 
   const findColumn = (itemId: TTask["id"]) => {
     return columns.find((col) => col.items.some((item) => item.id === itemId));
+  };
+
+  const handleAddTask = (task: TTask) => {
+    setColumns((prevColumns) =>
+      prevColumns.map((column) =>
+        column.id === task.columnId
+          ? { ...column, items: [...column.items, task] }
+          : column
+      )
+    );
+  };
+
+  const handleEditTask = (
+    taskId: TTask["id"],
+    updatedData: Pick<TTask, "title" | "description">
+  ) => {
+    setColumns((prevColumns) =>
+      prevColumns.map((column) => ({
+        ...column,
+        items: column.items.map((task) =>
+          task.id === taskId ? { ...task, ...updatedData } : task
+        ),
+      }))
+    );
+  };
+
+  const handleDeleteTask = (taskId: TTask["id"]) => {
+    setColumns((prevColumns) =>
+      prevColumns.map((column) => ({
+        ...column,
+        items: column.items.filter((task) => task.id !== taskId),
+      }))
+    );
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -89,7 +123,12 @@ export default function DragAndDrop() {
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
         {/* <div className="flex gap-4 overflow-auto flex-nowrap"> */}
         {columns.map((column) => (
-          <Column key={column.id} id={column.id} title={column.title}>
+          <Column
+            key={column.id}
+            id={column.id}
+            title={column.title}
+            handleAddTask={handleAddTask}
+          >
             <SortableContext
               items={column.items?.map((task) => task.id)}
               strategy={verticalListSortingStrategy}
@@ -100,6 +139,8 @@ export default function DragAndDrop() {
                   id={task.id}
                   title={task.title}
                   description={task.description}
+                  handleDelete={(taskId) => handleDeleteTask(taskId)}
+                  handleEdit={handleEditTask}
                 />
               ))}
             </SortableContext>
