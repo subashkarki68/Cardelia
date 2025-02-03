@@ -32,6 +32,7 @@ const TaskForm: FC<TaskFormProps> = ({ title, description, onSubmit }) => {
           </Label>
           <div className="flex-1">
             <Input
+              required
               id="title"
               defaultValue={title}
               type="text"
@@ -48,6 +49,7 @@ const TaskForm: FC<TaskFormProps> = ({ title, description, onSubmit }) => {
           </Label>
           <div className="flex-1">
             <Textarea
+              required
               id="desc"
               ref={descRef}
               defaultValue={description}
